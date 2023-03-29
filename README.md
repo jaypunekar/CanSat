@@ -10,7 +10,9 @@ A remote temperature sensing circuit using NodeMCU ESP8266
 5. 9 Volt Battery
 6. Breadboard
 
-# Process
+## Blynk Setup
+
+## Final Setup
 1. Connect the circuit as shown in the figure 
 2. Connect ESP8266 to a computer using Data Cable
 3. Open main.ino in Arduino IDE and transfer it to ESP8266
