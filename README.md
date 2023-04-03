@@ -11,6 +11,7 @@ A remote temperature sensing circuit using NodeMCU ESP8266
 6. Breadboard
 
 ## Blynk Setup
+1. [Blynk Link](https://blynk.io/)
 
 ## Final Setup
 1. Connect the circuit as shown in the figure 
