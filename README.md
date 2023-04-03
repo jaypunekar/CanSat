@@ -1,5 +1,5 @@
 # CanSat
-A remote temperature sensing circuit using NodeMCU ESP8266
+A remote Temperature & Humidity sensing device using NodeMCU ESP8266
 
 ## Hardware Reqiurements
 
