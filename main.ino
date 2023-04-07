@@ -6,12 +6,12 @@
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
-char auth[] = "KBckaU-lxDjlHuvcMiRcqVbcLuJ25aQZ"; //Enter the Auth code which was send by Blink
+char auth[] = "Auth Key"; //Enter the Auth code which was send by Blink
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
-char ssid[] = "2.5G-Punekar";  //Enter your WIFI Name
-char pass[] = "81340170";  //Enter your WIFI Password
+char ssid[] = "Your Username";  //Enter your WIFI Name
+char pass[] = "Your Passward";  //Enter your WIFI Password
 
 #define DHTPIN 5          // Digital pin 4
 
