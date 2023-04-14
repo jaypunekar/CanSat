@@ -11,7 +11,12 @@ A remote Temperature & Humidity sensing device using NodeMCU ESP8266
 6. Breadboard
 
 ## Blynk Setup
-1. [Blynk Link](https://blynk.io/)
+1. Go to [Blynk Link](https://blynk.io/)
+2. Make a Blynk Account
+3. Find the Authentication Key
+4. Open main.ino in Text Editor
+5. On line 9 put the Authentication Key
+
 
 ## Final Setup
 1. Connect the circuit as shown in the figure 
