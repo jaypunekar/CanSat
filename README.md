@@ -13,9 +13,10 @@ A remote Temperature & Humidity sensing device using NodeMCU ESP8266
 ## Blynk Setup
 1. Go to [Blynk Link](https://blynk.io/)
 2. Make a Blynk Account
-3. Find the Authentication Key
-4. Open main.ino in Text Editor
-5. On line 9 put the Authentication Key
+3. Add the parameters you want to measure
+4. Find the Authentication Key
+5. Open main.ino in Text Editor
+6. Put the Authentication Key, WiFi SSID & WiFi Password
 
 
 ## Final Setup
