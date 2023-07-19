@@ -20,6 +20,7 @@ A remote Temperature & Humidity sensing device using NodeMCU ESP8266
 
 
 ## Final Setup
+[![img22.png](https://i.postimg.cc/WztmtLD1/img22.png)](https://postimg.cc/7J8JQRMF)
 1. Connect the circuit as shown in the figure 
 2. Connect ESP8266 to a computer using Data Cable
 3. Open main.ino in Arduino IDE and transfer it to ESP8266
