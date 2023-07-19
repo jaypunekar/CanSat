@@ -13,7 +13,7 @@ char auth[] = "Auth Key"; //Enter the Auth code which was send by Blink
 char ssid[] = "Your Username";  //Enter your WIFI Name
 char pass[] = "Your Passward";  //Enter your WIFI Password
 
-#define DHTPIN 5          // Digital pin 4
+#define DHTPIN 1          // Digital pin 1
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11     // DHT 11
