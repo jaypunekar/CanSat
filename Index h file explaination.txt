@@ -1,0 +1,153 @@
+This code is an HTML webpage that displays real-time data of various parameters, such as Pressure, East Temperature, West Temperature, Humidity, and Altitude, using a line chart. The data is fetched periodically from an ESP8266 web server using AJAX and then plotted on the chart. Let's go through each part of the code step by step:
+
+const char MAIN_page[] PROGMEM = R"=====(: This line defines a C-style character array named MAIN_page. The const keyword ensures that the content of this array cannot be modified. The PROGMEM keyword places the array in the program memory (flash) of the microcontroller instead of RAM to save memory space. The string R"=====( and )=====" defines a raw string literal that allows you to include multiline text.
+
+<!doctype html>: This line specifies the HTML version of the webpage.
+
+<html>: The opening tag of the HTML document.
+
+<head>: The opening tag of the head section, which contains meta-information about the webpage, such as the title, scripts, and styles.
+
+<title>Line Chart | YUVIKA 2022</title>: Sets the title of the webpage, which will be displayed in the browser's title bar or tab.
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>: This line includes the Chart.js library from a content delivery network (CDN). Chart.js is a JavaScript library for creating interactive charts and graphs.
+
+<style>: The opening tag for embedding CSS styles in the document.
+
+canvas: CSS styles for the <canvas> element, which is used for drawing the line chart.
+
+#dataTable: CSS styles for the <table> element with the ID "dataTable", which will be used to display tabular data.
+
+</style>: The closing tag for the embedded CSS styles.
+
+</head>: The closing tag for the head section.
+
+<body>: The opening tag of the body section, which contains the visible content of the webpage.
+
+<div style="text-align:center;"><b>YuViKa 2022 ISRO</b><br>Real Time Data Humidity, Temperature Logging with Graphs on ESP8266</div>: A centered <div> element that displays a heading and a description for the webpage.
+
+<div class="chart-container" position: relative; height:350px; width:100%">: A <div> element with the class "chart-container" that will contain the line chart. The styles for position, height, and width are defined using inline CSS.
+
+<canvas id="Chart" width="400" height="400"></canvas>: The <canvas> element with the ID "Chart" that will be used to draw the line chart. The width and height attributes specify the dimensions of the canvas.
+
+</div>: The closing tag for the chart container <div>.
+
+<div>: The opening tag for another <div> element.
+
+<table id="dataTable">: The <table> element with the ID "dataTable", which will be used to display tabular data.
+
+<tr><th>Time</th><th>Pressure (kPa)</th><th>East Temp (&deg;C)</th><th>West Temp (&deg;C)</th><th>Humidity (%)</th><th>Altitude (m)</th></tr>: A table row <tr> containing table headers <th> for the columns in the data table.
+
+</table>: The closing tag for the data table.
+
+</div>: The closing tag for the <div> element that wraps the data table.
+
+<br>: An HTML line break element for adding some spacing.
+
+<script>: The opening tag for the embedded JavaScript code.
+
+var ADCvalues = [];: Declaration of an empty array ADCvalues to store ADC voltage data.
+
+var Tvalues = [];: Declaration of an empty array Tvalues to store East Temperature data.
+
+var TFvalues = [];: Declaration of an empty array TFvalues to store West Temperature data.
+
+var Hvalues = [];: Declaration of an empty array Hvalues to store Humidity data.
+
+var Altvalues = [];: Declaration of an empty array Altvalues to store Altitude data.
+
+var timeStamp = [];: Declaration of an empty array timeStamp to store timestamps of data updates.
+
+function showGraph() {...}: A JavaScript function definition that creates and updates the line chart using Chart.js library based on the data from the arrays above.
+
+window.onload = function() {...}: A JavaScript function that runs when the webpage is loaded. It logs the current time to the console.
+
+setInterval(function() {...}, 2000);: A JavaScript function that fetches data from the ESP8266 server every 2 seconds using AJAX.
+
+function getData() {...}: A JavaScript function that handles the AJAX request to fetch data from the server and updates the arrays with the new data.
+
+</script>: The closing tag for the embedded JavaScript code.
+
+</body>: The closing tag for the body section.
+
+</html>: The closing tag for the HTML document.
+
+Overall, this code sets up an HTML webpage with a line chart, and it fetches real-time data from an ESP8266 web server using AJAX to update the chart and display tabular data.
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+xplain the lines inside functions too
+ChatGPT
+Certainly! Let's go through the lines inside the two functions: showGraph() and getData():
+
+function showGraph() { ... }: This function is responsible for creating and updating the line chart on the webpage using Chart.js library based on the data from the arrays ADCvalues, Tvalues, TFvalues, Hvalues, Altvalues, and timeStamp.
+
+var ctx = document.getElementById("Chart").getContext('2d');: This line obtains the 2D drawing context of the canvas element with ID "Chart". The canvas element is where the line chart will be drawn.
+
+var Chart2 = new Chart(ctx, { ... });: This line creates a new instance of the Chart.js library, passing the 2D context of the canvas and a configuration object defining the chart's properties and datasets.
+
+type: 'line',: The type of chart being created is a line chart.
+
+labels: timeStamp,: The array timeStamp is used as labels for the X-axis (bottom labeling) of the line chart.
+
+datasets: [{ ... }, { ... }, ...]: An array of datasets, each representing a line in the chart for different parameters (Pressure, East Temp, West Temp, Humidity, and Altitude).
+
+fill: false,: The fill property is set to false, indicating that the area under the line chart will not be filled.
+
+backgroundColor: 'rgba(...)',: Sets the background color (dot marker color) for the line chart.
+
+borderColor: 'rgba(...)',: Sets the border color (graph line color) for the line chart.
+
+data: ADCvalues,: The array ADCvalues is used as the dataset for the "Pressure" line.
+
+options: { ... }: The configuration object for the chart's options, such as title, maintainAspectRatio, line tension, and scales.
+
+title: { ... }: The configuration object for the chart's title display. Here, the title is set to an empty string, so there will be no title displayed on the chart.
+
+maintainAspectRatio: false,: The chart is set to not maintain its aspect ratio, which means it will be responsive and adapt to the container's size.
+
+elements: { ... }: Configuration object for the chart's elements, such as lines. Here, the line tension is set to 0.5, which smoothes the data lines.
+
+scales: { ... }: Configuration object for the chart's scales (axes). Here, the y-axis is configured to begin at zero.
+
+window.onload = function() { ... }: This function runs when the webpage is loaded. In this case, it logs the current time to the console.
+
+setInterval(function() { ... }, 2000);: This sets an interval to execute the code inside the function repeatedly with a 2000 milliseconds (2 seconds) interval. This is used to call the getData() function every 2 seconds to update the chart and data.
+
+var xhttp = new XMLHttpRequest();: Creates a new XMLHttpRequest object, which is used to send and receive HTTP requests from the web server asynchronously.
+
+xhttp.onreadystatechange = function() { ... }: Defines an event handler function that will be called whenever the readyState property of the XMLHttpRequest changes (i.e., when the server response is received).
+
+xhttp.open("GET", "readADC", true);: Opens an asynchronous GET request to the server endpoint "readADC" on the ESP8266.
+
+xhttp.send();: Sends the HTTP request to the server.
+
+if (this.readyState == 4 && this.status == 200) { ... }: This condition checks if the XMLHttpRequest has completed (readyState 4) and if the HTTP status is 200, which means the request was successful.
+
+var time = new Date().toLocaleTimeString();: Gets the current time as a string using toLocaleTimeString() method.
+
+var txt = this.responseText;: Stores the response from the server in the variable txt.
+
+var obj = JSON.parse(txt);: Parses the response text (txt) into a JavaScript object (obj) using JSON.parse(). This assumes that the server sends the response as a JSON-formatted string.
+
+ADCvalues.push(obj.ADC);, Tvalues.push(obj.East_Temp);, ... : These lines push the data from the server response (obj) into the corresponding arrays (ADCvalues, Tvalues, etc.).
+
+timeStamp.push(time);: Adds the current time to the timeStamp array.
+
+showGraph();: Calls the showGraph() function to update the chart with the new data.
+
+var table = document.getElementById("dataTable");: Gets the reference to the HTML table element with the ID "dataTable".
+
+var row = table.insertRow(1);: Inserts a new row at position 1 (below the header row) in the table.
+
+var cell1 = row.insertCell(0); ... var cell6 = row.insertCell(5);: Inserts new cells in the newly created row to hold the data for each column.
+
+cell1.innerHTML = time; ... cell6.innerHTML = obj.Altitude;: Populates each cell with the corresponding data (time, ADC, East Temp, West Temp, Humidity, Altitude).
+
+Overall, these functions work together to fetch data from the server, update the arrays with new data, and then update the line chart and the data table in the HTML webpage with the latest information.
+
+
